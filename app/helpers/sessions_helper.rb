@@ -16,6 +16,11 @@ module SessionsHelper
     end
   end
 
+  # Returns true if the given user is the current user.
+  def current_user?(user)
+    user == current_user
+  end
+
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
