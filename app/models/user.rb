@@ -21,6 +21,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
+  def feed
+    Micropost.where('user_id = ?', id)
+  end
+
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
   end
